@@ -1,4 +1,5 @@
 import "./App.css";
+
 import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import MenuContainer from "./Components/MenuContainer";
@@ -21,7 +22,7 @@ import { useStateValue } from "./Components/StateProvider";
 
 function App() {
   const [isMainData, setMainData] = useState(
-    Items.filter((element) => element.itemId === "buger01")
+    Items.filter((element) => element.itemId == "buger01")
   );
 
   const [{ cart, total }, dispatch] = useStateValue();
@@ -51,7 +52,7 @@ function App() {
   }, [isMainData, cart, total, totalPrice]);
 
   const setData = (itemId) => {
-    setMainData(Items.filter((element) => element.itemId === itemId));
+    setMainData(Items.filter((element) => element.itemId == itemId));
   };
 
   return (
@@ -81,7 +82,7 @@ function App() {
         <div className="mainContainer">
           {/* Banner  */}
           <div className="banner">
-            <BannerName name={"Sumithra"} discount={"20"} more={"#"} />
+            <BannerName name={"Jeremy"} discount={"20"} more={"#"} />
             <img
               src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337"
               alt=""
@@ -101,7 +102,7 @@ function App() {
                     <MenuCard
                       imgSrc={data.imgSrc}
                       name={data.name}
-                      isActive={data.id === "1" ? true : false}
+                      isActive={data.id == "1" ? true : false}
                     />
                   </div>
                 ))}
@@ -140,7 +141,7 @@ function App() {
           ) : (
             <div className="cartCheckOutContianer">
               <div className="cartContainer">
-                <SubMenuContainer name={"Carts Items"} />
+                <SubMenuContainer />
 
                 <div className="cartItems">
                   {cart &&
@@ -159,7 +160,7 @@ function App() {
               <div className="totalSection">
                 <h3>Total</h3>
                 <p>
-                  <span>$ </span> 7.5
+                  <span>$ </span> {total}
                 </p>
               </div>
               <button className="checkOut">Check Out</button>
